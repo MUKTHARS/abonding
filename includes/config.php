@@ -15,6 +15,9 @@ define('SLIDER_UPLOAD_PATH', UPLOAD_PATH . 'sliders/');
 define('PRODUCT_UPLOAD_PATH', UPLOAD_PATH . 'products/');
 define('AWARD_UPLOAD_PATH', UPLOAD_PATH . 'awards/');
 define('INDUSTRY_UPLOAD_PATH', UPLOAD_PATH . 'industries/');
+define('TEAM_UPLOAD_PATH', UPLOAD_PATH . 'team/');
+define('ABOUT_UPLOAD_PATH', UPLOAD_PATH . 'about/');
+define('TEMP_UPLOAD_PATH', UPLOAD_PATH . 'temp/');
 
 // Start session
 session_start();

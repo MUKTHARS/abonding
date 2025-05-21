@@ -1,0 +1,190 @@
+/* Your existing CSS styles from the static site */
+/* Add any additional styles needed for the dynamic version */
+
+/* Counter animation */
+.counter {
+    font-weight: bold;
+    color: white;
+}
+
+/* Card styles for products */
+.cardproducts {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+    height: 100%;
+}
+
+.cardproducts:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+.cardproducts img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.cardproducts .card-body {
+    padding: 15px;
+}
+
+.cardproducts .learn-more {
+    color: #019626;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+/* Industries section styles */
+.industries-section {
+    padding: 60px 0;
+    background-color: rgba(255,255,255,0.9);
+}
+
+.industries-section h2 {
+    color: #019626;
+    margin-bottom: 20px;
+}
+
+.industries-section h2 span {
+    color: #333;
+}
+
+.industry-list {
+    columns: 2;
+    -webkit-columns: 2;
+    -moz-columns: 2;
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.industry-list li {
+    margin-bottom: 10px;
+    position: relative;
+    padding-left: 20px;
+}
+
+.industry-list li:before {
+    content: "•";
+    color: #019626;
+    position: absolute;
+    left: 0;
+}
+
+/* Awards section styles */
+.cardindustries {
+    border: none;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+}
+
+.cardindustries:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+.cardindustries img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+/* Statistics section */
+.bg-success {
+    background-color: #019626 !important;
+}
+
+/* Footer styles */
+footer {
+    background-color: #f8f9fa;
+    padding: 40px 0 20px;
+    margin-top: 40px;
+}
+
+.f-logo {
+    font-weight: 700;
+    color: #019626;
+    font-size: 24px;
+}
+
+footer ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+footer ul h1 {
+    font-size: 18px;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+footer ul li a {
+    color: #666;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+footer ul li a:hover {
+    color: #019626;
+}
+
+.social-icons a {
+    display: inline-block;
+    margin-right: 15px;
+    color: #666;
+    font-size: 20px;
+    transition: color 0.3s;
+}
+
+.social-icons a:hover {
+    color: #019626;
+}
+
+.copyright {
+    text-align: center;
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid #ddd;
+    color: #666;
+}
+
+/* Floating contact buttons */
+.bodydiv {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 99;
+}
+
+.btn-group.my {
+    margin-bottom: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.btn-group.my button {
+    border-radius: 50px 0 0 50px !important;
+}
+
+.btn-group.my a {
+    border-radius: 0 50px 50px 0 !important;
+    text-align: left;
+    padding: 10px 15px;
+    white-space: nowrap;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .industry-list {
+        columns: 1;
+        -webkit-columns: 1;
+        -moz-columns: 1;
+    }
+    
+    .cardproducts, .cardindustries {
+        margin-bottom: 20px;
+    }
+}
