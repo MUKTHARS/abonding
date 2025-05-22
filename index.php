@@ -47,16 +47,142 @@ $statistics = $db->fetchAll("SELECT * FROM statistics WHERE is_active = 1");
 <link rel="stylesheet" href="<?php echo BASE_URL; ?>/assets/css/home.css">
 <body>
     <header class="header" id="header">
-        <nav class="navbar container">
-            <section class="navbar__left">
-                <a href="<?php echo BASE_URL; ?>" class="brand" style="text-decoration: none;color:#019626;font-weight:700;font-size: 20px;">
-                    <img src="<?php echo BASE_URL . '/' . htmlspecialchars($settings['logo_path'] ?? 'assets/img/logo.png'); ?>" style="height:45px"/>
-                    <?php echo htmlspecialchars($settings['site_name'] ?? 'Abonding'); ?>
-                </a>
-                <!-- Rest of header -->
-            </section>
-        </nav>
-    </header>
+    <nav class="navbar container">
+        <section class="navbar__left">
+            <a href="<?php echo BASE_URL; ?>" class="brand" style="text-decoration: none;color:#019626;font-weight:700;font-size: 20px;">
+                <img src="<?php echo BASE_URL . '/' . htmlspecialchars($settings['logo_path'] ?? 'assets/img/logo.png'); ?>" style="height:45px"/>
+                <?php echo htmlspecialchars($settings['site_name'] ?? 'Abonding'); ?>
+            </a>
+        </section>
+        
+        <section class="navbar__center">
+            <ul class="nav__links">
+                <li><a href="<?php echo BASE_URL; ?>" class="active">Home</a></li>
+                <li><a href="<?php echo BASE_URL; ?>/about.php">About Us</a></li>
+                <li><a href="<?php echo BASE_URL; ?>/productrange.php">Product Range</a></li>
+                <li><a href="<?php echo BASE_URL; ?>/industries.php">Industries</a></li>
+                <li><a href="<?php echo BASE_URL; ?>/contact.php">Contact Us</a></li>
+            </ul>
+        </section>
+        
+        <section class="navbar__right">
+            <div class="search-box">
+                <form action="<?php echo BASE_URL; ?>/search.php" method="get">
+                    <input type="text" name="q" placeholder="Search..." class="search-input">
+                    <button type="submit" class="search-button">
+                        <i class="bi bi-search"></i>
+                    </button>
+                </form>
+            </div>
+        </section>
+        
+        <div class="mobile-menu-toggle">
+            <i class="bi bi-list"></i>
+        </div>
+    </nav>
+</header>
+
+<style>
+    /* Header Styles */
+    .header {
+        background-color: #fff;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        position: fixed;
+        width: 100%;
+        top: 0;
+        z-index: 1000;
+    }
+    
+    .navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 15px 0;
+    }
+    
+    .nav__links {
+        display: flex;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+    
+    .nav__links li {
+        margin: 0 15px;
+    }
+    
+    .nav__links a {
+        color: #333;
+        text-decoration: none;
+        font-weight: 500;
+        transition: color 0.3s;
+    }
+    
+    .nav__links a:hover, 
+    .nav__links a.active {
+        color: #019626;
+    }
+    
+    .search-box {
+        display: flex;
+        align-items: center;
+    }
+    
+    .search-input {
+        padding: 8px 15px;
+        border: 1px solid #ddd;
+        border-radius: 4px 0 0 4px;
+        outline: none;
+    }
+    
+    .search-button {
+        background-color: #019626;
+        color: white;
+        border: none;
+        padding: 8px 15px;
+        border-radius: 0 4px 4px 0;
+        cursor: pointer;
+    }
+    
+    .mobile-menu-toggle {
+        display: none;
+        font-size: 24px;
+        cursor: pointer;
+    }
+    
+    @media (max-width: 992px) {
+        .nav__links {
+            display: none;
+        }
+        
+        .search-box {
+            display: none;
+        }
+        
+        .mobile-menu-toggle {
+            display: block;
+        }
+    }
+</style>
+
+<script>
+    // Mobile menu toggle functionality
+    document.addEventListener('DOMContentLoaded', function() {
+        const toggle = document.querySelector('.mobile-menu-toggle');
+        const navLinks = document.querySelector('.nav__links');
+        
+        toggle.addEventListener('click', function() {
+            navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+        });
+        
+        // Close menu when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!e.target.closest('.navbar') && window.innerWidth <= 992) {
+                navLinks.style.display = 'none';
+            }
+        });
+    });
+</script>
 
    <section class="hero-slider hero-style">
     <div class="swiper-container">
