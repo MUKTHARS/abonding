@@ -1,4 +1,5 @@
 <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
+    <link rel="stylesheet" href="<?php echo BASE_URL; ?>/assets/css/header.css">
     <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="dashboard.php">
         <img src="../<?php echo htmlspecialchars($settings['logo_path'] ?? 'assets/img/logo.png'); ?>" height="30" class="me-2">
         <?php echo htmlspecialchars($settings['site_name'] ?? 'Abonding'); ?> Admin

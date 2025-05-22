@@ -7,11 +7,11 @@ define('DB_NAME', 'abonding');
 
 // Site configuration
 define('SITE_NAME', 'Abonding');
-define('BASE_URL', 'http://localhost/abonding-dynamic');
+define('BASE_URL', 'http://localhost/abonding.com');
 
 // File upload paths
 define('UPLOAD_PATH', __DIR__ . '/../uploads/');
-define('SLIDER_UPLOAD_PATH', UPLOAD_PATH . 'sliders/');
+define('SLIDER_UPLOAD_PATH', __DIR__ . '/../uploads/sliders/');
 define('PRODUCT_UPLOAD_PATH', UPLOAD_PATH . 'products/');
 define('AWARD_UPLOAD_PATH', UPLOAD_PATH . 'awards/');
 define('INDUSTRY_UPLOAD_PATH', UPLOAD_PATH . 'industries/');

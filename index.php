@@ -24,10 +24,27 @@ $statistics = $db->fetchAll("SELECT * FROM statistics WHERE is_active = 1");
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Your existing head content -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+      <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.0.7/css/swiper.min.css'>
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css'>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.5/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/boxicons/2.1.0/css/boxicons.min.css" integrity="sha512-pVCM5+SN2+qwj36KonHToF2p1oIvoU3bsqxphdOIWMYmgr4ZqD3t5DjKvvetKhXGc/ZG5REYTT6ltKfExEei/Q==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Counter-Up/1.0.0/jquery.counterup.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
     <title><?php echo htmlspecialchars($settings['site_name'] ?? 'Abonding'); ?> - Home</title>
-    <!-- Rest of head -->
-</head>
+    <link rel="stylesheet" href="<?php echo BASE_URL; ?>/assets/css/style.css">
+<link rel="stylesheet" href="<?php echo BASE_URL; ?>/assets/css/header.css">
+<link rel="stylesheet" href="<?php echo BASE_URL; ?>/assets/css/footer.css"></head>
+<link rel="stylesheet" href="<?php echo BASE_URL; ?>/assets/css/home.css">
 <body>
     <header class="header" id="header">
         <nav class="navbar container">
@@ -41,36 +58,36 @@ $statistics = $db->fetchAll("SELECT * FROM statistics WHERE is_active = 1");
         </nav>
     </header>
 
-    <section class="hero-slider hero-style">
-        <div class="swiper-container">
-            <div class="swiper-wrapper">
-                <?php foreach ($sliders as $slider): ?>
-                <div class="swiper-slide">
-                    <div class="slide-inner slide-bg-image" data-background="<?php echo BASE_URL . '/' . htmlspecialchars($slider['image_path']); ?>">
-                        <div class="container">
-                            <div data-swiper-parallax="400" class="slide-text">
-                                <p class="whitefont"><?php echo htmlspecialchars($slider['description']); ?></p>
-                            </div>
-                            <div class="clearfix"></div>
-                            <div data-swiper-parallax="500" class="slide-btns">
-                                <a href="<?php echo htmlspecialchars($slider['button_link']); ?>" class="theme-btn-s2"><?php echo htmlspecialchars($slider['button_text'] ?? 'Read More'); ?></a>
-                            </div>
+   <section class="hero-slider hero-style">
+    <div class="swiper-container">
+        <div class="swiper-wrapper">
+            <?php foreach ($sliders as $slider): ?>
+            <div class="swiper-slide">
+                <div class="slide-inner slide-bg-image" style="background-image: url('<?php echo BASE_URL . '/' . htmlspecialchars($slider['image_path']); ?>')">
+                    <div class="container">
+                        <div data-swiper-parallax="400" class="slide-text">
+                            <p class="whitefont"><?php echo htmlspecialchars($slider['description']); ?></p>
+                        </div>
+                        <div class="clearfix"></div>
+                        <div data-swiper-parallax="500" class="slide-btns">
+                            <a href="<?php echo htmlspecialchars($slider['button_link']); ?>" class="theme-btn-s2"><?php echo htmlspecialchars($slider['button_text'] ?? 'Read More'); ?></a>
                         </div>
                     </div>
                 </div>
-                <?php endforeach; ?>
             </div>
-            <div class="swiper-pagination"></div>
-            <div class="swiper-button-next"></div>
-            <div class="swiper-button-prev"></div>
+            <?php endforeach; ?>
         </div>
-    </section>
+        <div class="swiper-pagination"></div>
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+    </div>
+</section>
 
     <section>
         <div class="container py-5">
             <div class="row mb-5 justify-content-between">
                 <div class="col-md-6 col-12"><h3>Trending <span>Products</span></h3></div>
-                <div class="col-md-3 col-6"><a href="<?php echo BASE_URL; ?>/productrange" class="btn-custom btn">View More</a></div>
+                <div class="col-md-3 col-6"><a href="<?php echo BASE_URL; ?>/productrange.php" class="btn-custom btn">View More</a></div>
             </div>
             <div class="row">
                 <?php foreach ($productCategories as $category): ?>
@@ -80,7 +97,7 @@ $statistics = $db->fetchAll("SELECT * FROM statistics WHERE is_active = 1");
                         <div class="card-body">
                             <h5 class="card-title"><?php echo htmlspecialchars($category['name']); ?></h5>
                             <p class="card-text"><?php echo htmlspecialchars($category['description']); ?></p>
-                            <a href="<?php echo BASE_URL; ?>/productrange" class="learn-more">LEARN MORE <i class="bi bi-link-45deg"></i></a>
+                            <a href="<?php echo BASE_URL; ?>/productrange.php" class="learn-more">LEARN MORE <i class="bi bi-link-45deg"></i></a>
                         </div>
                     </div>
                 </div>
@@ -168,6 +185,27 @@ $statistics = $db->fetchAll("SELECT * FROM statistics WHERE is_active = 1");
     </div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 <script src="script.js"></script>
-    <!-- Your existing scripts -->
+ <script >
+    // In your script.js or at the bottom of index.php
+document.addEventListener('DOMContentLoaded', function() {
+    var swiper = new Swiper('.swiper-container', {
+        loop: true,
+        speed: 1000,
+        parallax: true,
+        autoplay: {
+            delay: 5000,
+            disableOnInteraction: false,
+        },
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+        },
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+    });
+});
+ </script>
 </body>
 </html>

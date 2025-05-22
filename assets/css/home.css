@@ -1,193 +1,35 @@
-/* Your existing CSS styles from the static site */
-/* Add any additional styles needed for the dynamic version */
-
-/* Counter animation */
-.counter {
-    font-weight: bold;
-    color: white;
+/* Homepage specific styles */
+.hero-slider .container {
+  width:1200px;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
 }
 
-/* Card styles for products */
-.cardproducts {
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    overflow: hidden;
-    transition: transform 0.3s ease;
-    height: 100%;
+.hero-slider h2 {
+      line-height:1.1;
+}
+.hero-slider {
+  width: 100%;
+  height: 100vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+  z-index: 0;
 }
 
-.cardproducts:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+.blackfont {
+color: black !important;
 }
 
-.cardproducts img {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
+.whitefont {
+color: #ffffff !important;
+font-weight:900;
 }
 
-.cardproducts .card-body {
-    padding: 15px;
-}
-
-.cardproducts .learn-more {
-    color: #019626;
-    text-decoration: none;
-    font-weight: 500;
-}
-
-/* Industries section styles */
-.industries-section {
-    padding: 60px 0;
-    background-color: rgba(255,255,255,0.9);
-}
-
-.industries-section h2 {
-    color: #019626;
-    margin-bottom: 20px;
-}
-
-.industries-section h2 span {
-    color: #333;
-}
-
-.industry-list {
-    columns: 2;
-    -webkit-columns: 2;
-    -moz-columns: 2;
-    list-style-type: none;
-    padding-left: 0;
-}
-
-.industry-list li {
-    margin-bottom: 10px;
-    position: relative;
-    padding-left: 20px;
-}
-
-.industry-list li:before {
-    content: "•";
-    color: #019626;
-    position: absolute;
-    left: 0;
-}
-
-/* Awards section styles */
-.cardindustries {
-    border: none;
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    transition: all 0.3s ease;
-}
-
-.cardindustries:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-}
-
-.cardindustries img {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-}
-
-/* Statistics section */
-.bg-success {
-    background-color: #019626 !important;
-}
-
-/* Footer styles */
-footer {
-    background-color: #f8f9fa;
-    padding: 40px 0 20px;
-    margin-top: 40px;
-}
-
-.f-logo {
-    font-weight: 700;
-    color: #019626;
-    font-size: 24px;
-}
-
-footer ul {
-    list-style: none;
-    padding-left: 0;
-}
-
-footer ul h1 {
-    font-size: 18px;
-    margin-bottom: 15px;
-    color: #333;
-}
-
-footer ul li a {
-    color: #666;
-    text-decoration: none;
-    transition: color 0.3s;
-}
-
-footer ul li a:hover {
-    color: #019626;
-}
-
-.social-icons a {
-    display: inline-block;
-    margin-right: 15px;
-    color: #666;
-    font-size: 20px;
-    transition: color 0.3s;
-}
-
-.social-icons a:hover {
-    color: #019626;
-}
-
-.copyright {
-    text-align: center;
-    margin-top: 30px;
-    padding-top: 20px;
-    border-top: 1px solid #ddd;
-    color: #666;
-}
-
-/* Floating contact buttons */
-.bodydiv {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    z-index: 99;
-}
-
-.btn-group.my {
-    margin-bottom: 10px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-}
-
-.btn-group.my button {
-    border-radius: 50px 0 0 50px !important;
-}
-
-.btn-group.my a {
-    border-radius: 0 50px 50px 0 !important;
-    text-align: left;
-    padding: 10px 15px;
-    white-space: nowrap;
-}
-
-/* Responsive adjustments */
-@media (max-width: 768px) {
-    .industry-list {
-        columns: 1;
-        -webkit-columns: 1;
-        -moz-columns: 1;
-    }
-    
-    .cardproducts, .cardindustries {
-        margin-bottom: 20px;
-    }
-}
+/* Rest of your homepage-specific CSS */
  @import url('https://fonts.googleapis.com/css2?family=Turret+Road:wght@200;300;400;500;700;800&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 .ui-autocomplete {
@@ -1598,158 +1440,47 @@ transition:all 2s;
             font-size: 1.4rem;
         }
 
-/* Main Styles - Matches abonding.com */
-:root {
-  --primary-color: #019626;
-  --secondary-color: #161d27;
-  --text-color: #333;
-  --light-gray: #f8f9fa;
-  --white: #ffffff;
-  --dark-green: #017a1f;
-}
-
-body {
-  font-family: 'Montserrat', sans-serif;
-  color: var(--text-color);
-  line-height: 1.6;
-  margin: 0;
-  padding: 0;
-}
-
-/* Header Styles (Matches Original) */
-.header {
-  background: var(--white);
-  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-  position: fixed;
-  width: 100%;
-  z-index: 1000;
-}
-
-.navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 15px 0;
-}
-
-.brand {
+/* Homepage-Specific Styles (Matches abonding.com) */
+.hero-style .slide-text p {
+  font-size: 1.5rem;
   font-weight: 700;
-  font-size: 24px;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+}
+
+.whitefont {
+  color: white !important;
+  font-weight: 700;
+}
+
+.blackfont {
+  color: black !important;
+}
+
+/* Trending Products Section */
+.trending-products h3 {
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.trending-products h3 span {
   color: var(--primary-color);
-  display: flex;
-  align-items: center;
 }
 
-.brand img {
-  height: 45px;
-  margin-right: 10px;
-}
-
-/* Hero Slider (Matches Original) */
-.hero-slider {
-  height: 100vh;
-  width: 100%;
-}
-
-.swiper-slide {
-  background-size: cover;
-  background-position: center;
-}
-
-.slide-text {
-  color: white;
+/* Awards Section */
+.section-title {
+  font-size: 2rem;
   font-weight: 700;
-  font-size: 1.2rem;
 }
 
-/* Product Cards (Matches Original) */
-.cardproducts {
-  border-radius: 8px;
-  overflow: hidden;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-}
-
-.cardproducts:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-}
-
-.cardproducts img {
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
-}
-
-/* Industries Section (Matches Original) */
-.industries-section {
-  background: rgba(255,255,255,0.9);
-  padding: 60px 0;
-}
-
-.industry-list {
-  columns: 2;
-  list-style: none;
-  padding: 0;
-}
-
-.industry-list li {
-  margin-bottom: 10px;
-  position: relative;
-  padding-left: 20px;
-}
-
-.industry-list li:before {
-  content: "•";
+.section-title span {
   color: var(--primary-color);
-  position: absolute;
-  left: 0;
 }
 
-/* Footer (Matches Original) */
-footer {
-  background: #353745;
-  color: white;
-  padding: 40px 0;
-}
-
-.f-logo {
-  color: white;
-  font-weight: 700;
-  font-size: 25px;
-}
-
-.social-icons a {
-  background: #424356;
-  width: 35px;
-  height: 35px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 50%;
-  margin-right: 10px;
-}
-
-.social-icons a:hover {
+.underline {
+  height: 3px;
+  width: 80px;
   background: var(--primary-color);
-}
-
-/* Floating Buttons (Matches Original) */
-.bodydiv {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  z-index: 999;
-}
-
-.btn-group.my .btn-success {
-  background: var(--primary-color);
-  border: none;
-}
-
-.btn-group.my .btn-light {
-  background: white;
-  color: #333;
+  margin: 10px auto;
 }
 
 /* In your home.css or style.css */

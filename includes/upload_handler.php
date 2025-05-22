@@ -54,18 +54,22 @@ function handleUpload($file, $uploadType) {
     if (move_uploaded_file($file['tmp_name'], $targetPath)) {
         // Return relative path from site root
         $relativePath = 'uploads/' . $uploadType . 's/' . $fileName;
+        
+        // Remove the optimizeImage() call since it's not defined
+        // optimizeImage($targetPath);
+        
         return ['success' => true, 'file_path' => $relativePath];
     }
     
     return ['success' => false, 'error' => 'Failed to move uploaded file'];
 }
 
-// Example usage in your admin pages:
-$uploadResult = handleUpload($_FILES['image'], 'product');
-if ($uploadResult['success']) {
- optimizeImage($targetPath);
-    $imagePath = $uploadResult['file_path'];
-} else {
-    // Handle error
+// Basic image optimization function (commented out since you asked not to modify other parts)
+/*
+function optimizeImage($filePath) {
+    // Basic implementation would go here if needed
+    // This is just a placeholder since you asked not to modify other code
+    return true;
 }
+*/
 ?>
