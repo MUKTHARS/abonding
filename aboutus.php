@@ -46,8 +46,92 @@ $teamMembers = $db->fetchAll("SELECT * FROM team_members WHERE is_active = 1 ORD
    <link rel="stylesheet" href="<?php echo BASE_URL; ?>/assets/css/style.css">
 <link rel="stylesheet" href="<?php echo BASE_URL; ?>/assets/css/header.css">
 <link rel="stylesheet" href="<?php echo BASE_URL; ?>/assets/css/footer.css">
+<style>
+    /* Header Styles */
+    .header {
+        background-color: #fff;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        position: fixed;
+        width: 100%;
+        top: 0;
+        z-index: 1000;
+    }
+    
+    .navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 15px 0;
+    }
+    
+    .nav__links {
+        display: flex;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+    
+    .nav__links li {
+        margin: 0 15px;
+    }
+    
+    .nav__links a {
+        color: #333;
+        text-decoration: none;
+        font-weight: 500;
+        transition: color 0.3s;
+    }
+    
+    .nav__links a:hover, 
+    .nav__links a.active {
+        color: #019626;
+    }
+    
+    .search-box {
+        display: flex;
+        align-items: center;
+    }
+    
+    .search-input {
+        padding: 8px 15px;
+        border: 1px solid #ddd;
+        border-radius: 4px 0 0 4px;
+        outline: none;
+    }
+    
+    .search-button {
+        background-color: #019626;
+        color: white;
+        border: none;
+        padding: 8px 15px;
+        border-radius: 0 4px 4px 0;
+        cursor: pointer;
+    }
+    
+    .mobile-menu-toggle {
+        display: none;
+        font-size: 24px;
+        cursor: pointer;
+    }
+    
+    @media (max-width: 992px) {
+        .nav__links {
+            display: none;
+        }
+        
+        .search-box {
+            display: none;
+        }
+        
+        .mobile-menu-toggle {
+            display: block;
+        }
+    }
+</style>
 </head>
+
 <body>
+    
     <?php include 'includes/header.php'; ?>
     
     <section class="about-hero">
@@ -64,7 +148,7 @@ $teamMembers = $db->fetchAll("SELECT * FROM team_members WHERE is_active = 1 ORD
                     <p><?php echo htmlspecialchars($aboutContent['company_description']); ?></p>
                 </div>
                 <div class="col-lg-6">
-                    <img src="<?php echo BASE_URL; ?>/assets/img/about-company.jpg" alt="Our Company" class="img-fluid rounded">
+                    <img src="<?php echo BASE_URL; ?>/assets/img/logo.png" alt="Our Company" class="img-fluid rounded">
                 </div>
             </div>
             

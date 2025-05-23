@@ -20,6 +20,7 @@ $awards = $db->fetchAll("SELECT * FROM awards WHERE is_active = 1 LIMIT 4");
 
 // Get statistics
 $statistics = $db->fetchAll("SELECT * FROM statistics WHERE is_active = 1");
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -58,10 +59,10 @@ $statistics = $db->fetchAll("SELECT * FROM statistics WHERE is_active = 1");
         <section class="navbar__center">
             <ul class="nav__links">
                 <li><a href="<?php echo BASE_URL; ?>" class="active">Home</a></li>
-                <li><a href="<?php echo BASE_URL; ?>/about.php">About Us</a></li>
+                <li><a href="<?php echo BASE_URL; ?>/aboutus.php">About Us</a></li>
                 <li><a href="<?php echo BASE_URL; ?>/productrange.php">Product Range</a></li>
                 <li><a href="<?php echo BASE_URL; ?>/industries.php">Industries</a></li>
-                <li><a href="<?php echo BASE_URL; ?>/contact.php">Contact Us</a></li>
+                <li><a href="<?php echo BASE_URL; ?>/contactus.php">Contact Us</a></li>
             </ul>
         </section>
         
@@ -163,6 +164,20 @@ $statistics = $db->fetchAll("SELECT * FROM statistics WHERE is_active = 1");
             display: block;
         }
     }
+    .hero-slider .slide-inner {
+  width: 100%;
+  height: 100%; /* Changed from 420px to 100% */
+  position: relative;
+  left: 0;
+  top: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color:#000000bd !important;
+  text-align: left;
+}
+
+    
 </style>
 
 <script>
@@ -289,14 +304,7 @@ $statistics = $db->fetchAll("SELECT * FROM statistics WHERE is_active = 1");
         </div>
     </section>
 
-    <!-- Footer (similar dynamic approach) -->
-    <footer>
-        <div class="up-section">
-            <a href="#" class="f-logo"><?php echo htmlspecialchars($settings['site_name'] ?? 'Abonding'); ?></a>
-            <!-- Rest of footer -->
-        </div>
-        <p class="copyright"><span class="f-logo"><?php echo htmlspecialchars($settings['site_name'] ?? 'Abonding'); ?></span>Copyright <?php echo date('Y'); ?></p>
-    </footer>
+ 
 
     <!-- Floating contact buttons -->
     <div class="bodydiv">
@@ -333,5 +341,6 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
  </script>
+ <?php include 'includes/footer.php'; ?>
 </body>
 </html>

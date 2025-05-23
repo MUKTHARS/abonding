@@ -6,11 +6,12 @@
 
         <ul>
             <h1>Quick links</h1>
-            <li><a href="<?php echo BASE_URL; ?>/">Home</a></li>
-            <li><a href="<?php echo BASE_URL; ?>/aboutus">About Us</a></li>
-            <li><a href="<?php echo BASE_URL; ?>/productrange">Product Range</a></li>
-            <li><a href="<?php echo BASE_URL; ?>/industries">Industries</a></li>
-            <li><a href="<?php echo BASE_URL; ?>/contactus">Contact Us</a></li>
+            <li><a href="<?php echo BASE_URL; ?>" class="<?php echo basename($_SERVER['PHP_SELF']) == 'index.php' ? 'active' : ''; ?>">Home</a></li>
+                <li><a href="<?php echo BASE_URL; ?>/aboutus.php" class="<?php echo basename($_SERVER['PHP_SELF']) == 'aboutus.php' ? 'active' : ''; ?>">About Us</a></li>
+                <li><a href="<?php echo BASE_URL; ?>/productrange.php" class="<?php echo basename($_SERVER['PHP_SELF']) == 'productrange.php' ? 'active' : ''; ?>">Product Range</a></li>
+                <li><a href="<?php echo BASE_URL; ?>/industries.php" class="<?php echo basename($_SERVER['PHP_SELF']) == 'industries.php' ? 'active' : ''; ?>">Industries</a></li>
+                <li><a href="<?php echo BASE_URL; ?>/contactus.php" class="<?php echo basename($_SERVER['PHP_SELF']) == 'contactus.php' ? 'active' : ''; ?>">Contact Us</a></li>
+           
         </ul>
 
         <ul>
@@ -18,7 +19,8 @@
             <li><a href="<?php echo BASE_URL; ?>/aboutus#company">Company</a></li>
             <li><a href="<?php echo BASE_URL; ?>/contactus#location">Location</a></li>
             <li><a href="<?php echo BASE_URL; ?>/aboutus">About</a></li>
-            <li><a href="<?php echo BASE_URL; ?>/productrange">Our Products</a></li>
+            <li><a href="<?php echo BASE_URL; ?>/productrange.php" class="<?php echo basename($_SERVER['PHP_SELF']) == 'productrange.php' ? 'active' : ''; ?>">Our Products</a></li>
+               
         </ul>
         
         <div class="social">

@@ -4,7 +4,19 @@ require_once '../includes/auth.php';
 require_once '../includes/db.php';
 
 // checkAdminAccess();
+// Get counts for dashboard
+$sliderCount = $db->fetchOne("SELECT COUNT(*) as count FROM sliders")['count'];
+$productCount = $db->fetchOne("SELECT COUNT(*) as count FROM products")['count'];
+$industryCount = $db->fetchOne("SELECT COUNT(*) as count FROM industries")['count'];
+$awardCount = $db->fetchOne("SELECT COUNT(*) as count FROM awards")['count'];
+$contactCount = $db->fetchOne("SELECT COUNT(*) as count FROM contacts")['count'];
+$unreadContactCount = $db->fetchOne("SELECT COUNT(*) as count FROM contacts WHERE is_read = 0")['count'];
 
+// Get all product categories
+$productCategories = $db->fetchAll("SELECT * FROM product_categories ORDER BY name");
+
+// Get recent contact submissions
+$recentContacts = $db->fetchAll("SELECT * FROM contacts ORDER BY created_at DESC LIMIT 5");
 // Handle form submissions
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Add new category
@@ -45,7 +57,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $description = $_POST['description'] ?? '';
         
         // Handle file upload if new image provided
-        $updateFields = ['name' => $name, 'description' => $description];
+  $updateFields = [
+    'name' => $_POST['name'] ?? '',
+    'description' => $_POST['description'] ?? '',
+    'applications' => $_POST['applications'] ?? '',
+    'benefits' => $_POST['benefits'] ?? '',
+    'manufacturer' => $_POST['manufacturer'] ?? ''
+];
         
         if (isset($_FILES['image']) && $_FILES['image']['error'] === UPLOAD_ERR_OK) {
             $targetDir = '../uploads/product_categories/';
@@ -100,6 +118,25 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         exit;
     }
 }
+// $applications = $_POST['applications'] ?? '';
+// $benefits = $_POST['benefits'] ?? '';
+// $manufacturer = $_POST['manufacturer'] ?? '';
+
+// $db->query(
+//     "INSERT INTO product_categories (name, image_path, description, applications, benefits, manufacturer, is_active) 
+//     VALUES (?, ?, ?, ?, ?, ?, 1)",
+//     [$name, $imagePath, $description, $_POST['applications'] ?? '', $_POST['benefits'] ?? '', $_POST['manufacturer'] ?? '']
+// );
+
+// // In the update_category section
+// $updateFields = [
+//     'name' => $_POST['name'] ?? '',
+//     'description' => $_POST['description'] ?? '',
+//     'applications' => $_POST['applications'] ?? '',
+//     'benefits' => $_POST['benefits'] ?? '',
+//     'manufacturer' => $_POST['manufacturer'] ?? ''
+// ];
+
 
 // Get counts for dashboard
 $sliderCount = $db->fetchOne("SELECT COUNT(*) as count FROM sliders")['count'];
@@ -138,7 +175,7 @@ $productCategories = $db->fetchAll("SELECT * FROM product_categories ORDER BY na
     </style>
 </head>
 <body>
-    <?php include '../includes/header.php'; ?>
+    <!-- <?php include '../includes/header.php'; ?> -->
     
     <div class="container-fluid">
         <div class="row">
@@ -188,6 +225,16 @@ $productCategories = $db->fetchAll("SELECT * FROM product_categories ORDER BY na
                             </div>
                         </div>
                     </div>
+                    <div class="col-md-3">
+    <div class="card bg-danger text-white">
+        <div class="card-body">
+            <h5 class="card-title">Contacts</h5>
+            <h2><?php echo $contactCount; ?></h2>
+            <small><?php echo $unreadContactCount; ?> unread</small>
+            <a href="contacts.php" class="text-white">Manage <i class="bi bi-arrow-right"></i></a>
+        </div>
+    </div>
+</div>
                 </div>
                 
                 <!-- Add Product Category Form -->
@@ -209,6 +256,19 @@ $productCategories = $db->fetchAll("SELECT * FROM product_categories ORDER BY na
                                 <label for="description" class="form-label">Description</label>
                                 <textarea class="form-control" id="description" name="description" rows="3" required></textarea>
                             </div>
+                            <div class="mb-3">
+    <label for="applications" class="form-label">Applications</label>
+    <textarea class="form-control" id="applications" name="applications" rows="3"></textarea>
+</div>
+<div class="mb-3">
+    <label for="benefits" class="form-label">Benefits</label>
+    <textarea class="form-control" id="benefits" name="benefits" rows="3"></textarea>
+</div>
+<div class="mb-3">
+    <label for="manufacturer" class="form-label">Manufacturer</label>
+    <input type="text" class="form-control" id="manufacturer" name="manufacturer">
+</div>
+                            
                             <button type="submit" name="add_category" class="btn btn-primary">Add Category</button>
                         </form>
                     </div>
@@ -251,6 +311,18 @@ $productCategories = $db->fetchAll("SELECT * FROM product_categories ORDER BY na
                                                     <label class="form-label">Description</label>
                                                     <textarea class="form-control form-control-sm" name="description" rows="3" required><?php echo htmlspecialchars($category['description']); ?></textarea>
                                                 </div>
+                                                <div class="mb-2">
+    <label class="form-label">Applications</label>
+    <textarea class="form-control form-control-sm" name="applications" rows="3"><?php echo htmlspecialchars($category['applications'] ?? ''); ?></textarea>
+</div>
+<div class="mb-2">
+    <label class="form-label">Benefits</label>
+    <textarea class="form-control form-control-sm" name="benefits" rows="3"><?php echo htmlspecialchars($category['benefits'] ?? ''); ?></textarea>
+</div>
+<div class="mb-2">
+    <label class="form-label">Manufacturer</label>
+    <input type="text" class="form-control form-control-sm" name="manufacturer" value="<?php echo htmlspecialchars($category['manufacturer'] ?? ''); ?>">
+</div>
                                                 <div class="d-flex justify-content-between">
                                                     <button type="submit" name="update_category" class="btn btn-sm btn-success">Update</button>
                                                     <button type="button" class="btn btn-sm btn-secondary cancel-edit" data-id="<?php echo $category['id']; ?>">Cancel</button>

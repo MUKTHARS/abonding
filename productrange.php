@@ -1,7 +1,17 @@
 <?php
 require_once 'includes/config.php';
 require_once 'includes/db.php';
+if (!defined('BASE_URL')) {
+    define('BASE_URL', 'http://localhost/abonding.com'); // Adjust if your base URL is different
+}
 
+// Load settings if not already loaded
+if (!isset($settings)) {
+    require_once 'includes/config.php';
+    require_once 'includes/db.php';
+    $db = new Database();
+    $settings = $db->fetchOne("SELECT * FROM site_settings LIMIT 1") ?: [];
+}
 // Get all product categories
 $categories = $db->fetchAll("SELECT * FROM product_categories WHERE is_active = 1 ORDER BY name");
 
@@ -132,6 +142,88 @@ unset($category); // Break the reference
             color: white;
         }
     </style>
+    <style>
+    /* Header Styles */
+    .header {
+        background-color: #fff;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        position: fixed;
+        width: 100%;
+        top: 0;
+        z-index: 1000;
+    }
+    
+    .navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 15px 0;
+    }
+    
+    .nav__links {
+        display: flex;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+    
+    .nav__links li {
+        margin: 0 15px;
+    }
+    
+    .nav__links a {
+        color: #333;
+        text-decoration: none;
+        font-weight: 500;
+        transition: color 0.3s;
+    }
+    
+    .nav__links a:hover, 
+    .nav__links a.active {
+        color: #019626;
+    }
+    
+    .search-box {
+        display: flex;
+        align-items: center;
+    }
+    
+    .search-input {
+        padding: 8px 15px;
+        border: 1px solid #ddd;
+        border-radius: 4px 0 0 4px;
+        outline: none;
+    }
+    
+    .search-button {
+        background-color: #019626;
+        color: white;
+        border: none;
+        padding: 8px 15px;
+        border-radius: 0 4px 4px 0;
+        cursor: pointer;
+    }
+    
+    .mobile-menu-toggle {
+        display: none;
+        font-size: 24px;
+        cursor: pointer;
+    }
+    
+    @media (max-width: 992px) {
+        .nav__links {
+            display: none;
+        }
+        
+        .search-box {
+            display: none;
+        }
+        
+        .mobile-menu-toggle {
+            display: block;
+        }
+    }
+</style>
 </head>
 <body>
     <?php include 'includes/header.php'; ?>
@@ -143,7 +235,7 @@ unset($category); // Break the reference
                     <h2 class="section-title">Our <span>Product Range</span></h2>
                 </div>
                 <div class="col-md-3 col-6">
-                    <a href="<?php echo BASE_URL; ?>/productrange" class="btn btn-custom">View All</a>
+                   <a href="<?php echo BASE_URL; ?>/productrange.php" class="btn-custom btn">View All</a>
                 </div>
             </div>
             
@@ -157,7 +249,7 @@ unset($category); // Break the reference
                         <div class="card-body">
                             <h5 class="card-title"><?php echo htmlspecialchars($category['name']); ?></h5>
                             <p class="card-text"><?php echo htmlspecialchars($category['description']); ?></p>
-                            <a href="<?php echo BASE_URL; ?>/productdetails?id=<?php echo $category['id']; ?>" class="learn-more">
+                            <a href="<?php echo BASE_URL; ?>/productdetails.php?id=<?php echo $category['id']; ?>" class="learn-more">
                                 LEARN MORE <i class="bi bi-link-45deg"></i>
                             </a>
                         </div>
